@@ -1,0 +1,61 @@
+<html>
+  <body>
+    <div class="layout">
+      <div class="layout__left-sidebar">
+        <div class="sidebar-menu">
+          <div class="sidebar-menu__item sidebar-menu__item--active">
+            <a href="/"><img src="./assets/svg/home.svg" class="sidebar-menu__item-icon" />
+            Home</a>
+          </div>
+          <div class="sidebar-menu__item">
+            <a href="/profile"><img
+              src="../../assets/svg/profile.svg"
+              class="sidebar-menu__item-icon"
+            />
+            Profile</a>
+          </div>
+        </div>
+      </div>
+      <div class="layout__main">
+        <ng-container *ngFor="let tweets of allTweets | async">
+          <div class="tweet">
+            <img
+              class="tweet__author-logo"
+              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            />
+            <div class="tweet__main">
+              <div class="tweet__header">
+                <div class="tweet__author-name">
+                  {{ tweets.username }}
+                </div>
+                <div class="tweet__author-slug">
+                  {{ tweets.createdAt | date: "medium" }}
+                  <a (click)="modifyTweet(tweets._id)" span class="material-icons">
+                    edit
+                  </a>
+                  <a (click)="removeTweet(tweets._id)" span class="material-icons">
+                    delete
+                  </a>
+                </div>
+              </div>
+              <div class="tweet__content">
+                {{ tweets.desc }}
+              </div>
+               <!-- <div class="post__options">
+                            <div class="post__option">
+                                <a (click)="likeTweet(tweets._id)" img src="../../assets/svg/unlike.jpg" class="sidebar-menu__item-icon">
+                                <p>{{ tweets.likes }} Like</p></a>
+                            </div>
+
+                            <div class="post__option">
+                                <span class="material-icons"> chat_bubble_outline </span>
+                                <p>Comment</p>
+                            </div>
+                        </div> -->
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </body>
+</html>

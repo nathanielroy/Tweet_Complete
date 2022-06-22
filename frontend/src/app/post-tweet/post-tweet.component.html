@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card card-container">
+    <img
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      id="profile-img"
+      class="profile-img-card"
+    />
+    <div *ngIf="message" class="alert alert-success mt-3 mb-0">
+      {{ message }}
+    </div>
+    <form name="tweetForm">
+      <div class="form-group">
+        <label for="tweetTyped">Type your tweet</label>
+        <input
+          type="text"
+          name="tweetTyped"
+          class="form-control input-text-custom"
+          id="tweetTyped"
+          [(ngModel)]="tweetTyped"
+          required
+        />
+      </div>
+      <button
+        class="btn btn-lg btn-primary btn-block btn-signin form-submit-button"
+        (click)="onPostTweet()"
+      >
+        Post Tweet
+      </button>
+    </form>
+    <a [routerLink]="['/my-tweets']" class="btn btn-link">View My Tweets</a>
+    <a [routerLink]="['/register']" class="btn btn-link">Back to Profile</a>
+  </div>
+</div>
